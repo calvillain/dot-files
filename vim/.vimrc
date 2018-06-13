@@ -1,0 +1,154 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Utility
+Plugin 'scrooloose/nerdtree'
+" Plugin 'majutsushi/tagbar'
+Plugin 'ervandew/supertab'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'benmills/vimux'
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" Generic Programming Support 
+Plugin 'honza/vim-snippets'
+Plugin 'Townk/vim-autoclose'
+Plugin 'tomtom/tcomment_vim'
+
+" Git support
+Plugin 'tpope/vim-fugitive'
+
+" Theme / Interface
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'arcticicestudio/nord-vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"""""""""""""""""""""""""""""""""""""
+" Configuration Section
+" """""""""""""""""""""""""""""""""""""
+set nowrap
+
+set number
+
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+
+set laststatus=2
+
+set norelativenumber
+set nocursorline
+
+syntax on
+set t_Co=256
+
+colorscheme nord
+
+" Vim-Airline Configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1 
+" let g:airline_theme='hybrid'
+" let g:hybrid_custom_term_colors = 1
+
+" Devicons configuration 
+let g:webdevicons_conceal_nerdtree_brackets = 1
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+
+" NERDTree Configuration
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd VimEnter * NERDTree | wincmd p
+
+
+" Fzf Configuration
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
+
+
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
+
+
+
+"""""""""""""""""""""""""""""""""""""
+" Mappings configurationn
+" """""""""""""""""""""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer = 'et'
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+" Disable arrow movement, resize splits instead.
+if get(g:, 'elite_mode')
+	nnoremap <Up>    :resize +2<CR>
+	nnoremap <Down>  :resize -2<CR>
+	nnoremap <Left>  :vertical resize +2<CR>
+	nnoremap <Right> :vertical resize -2<CR>
+endif
