@@ -89,6 +89,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 autocmd VimEnter * NERDTree | wincmd p
 
+" CtrlP configuration
+let g:ctrlp_show_hidden = 1
 
 " Fzf Configuration
 " This is the default extra key bindings
