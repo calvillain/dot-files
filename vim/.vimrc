@@ -130,8 +130,8 @@ let g:elite_mode=1
 
 """""""""""""""""""""""""""""""""""""
 " Mappings configurationn
-" """""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
+"""""""""""""""""""""""""""""""""""""
+nnoremap <C-b> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -144,6 +144,12 @@ nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
+
+" Move lines up and down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+nnoremap <C-t>        :tabnew<CR>
 
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
