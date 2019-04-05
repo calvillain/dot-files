@@ -24,6 +24,8 @@ Plugin 'benmills/vimux'
 Plugin 'honza/vim-snippets'
 Plugin 'Townk/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'klen/python-mode'
 
 " Git support
 Plugin 'tpope/vim-fugitive'
@@ -150,6 +152,8 @@ set splitright
 " Move lines up and down
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>gi
+inoremap <C-k> <Esc>:m .-2<CR>gi
 
 nnoremap <C-t>        :tabnew<CR>
 
