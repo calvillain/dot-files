@@ -150,10 +150,10 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_switch_buffer = 'et'
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
@@ -173,3 +173,6 @@ if get(g:, 'elite_mode')
 	nnoremap <Left>  :vertical resize +2<CR>
 	nnoremap <Right> :vertical resize -2<CR>
 endif
+
+" set syntax for Jenkins files
+autocmd BufNewFile,BufRead Jenkinsfile.* set filetype=groovy
