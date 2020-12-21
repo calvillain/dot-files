@@ -13,7 +13,7 @@ bind-key -r C-l resize-pane -R
 bind-key -r C-k resize-pane -U
 
 # split panes using | and -
-bind | split-window -h
+bind '\' split-window -h
 bind - split-window -v
 unbind '"' 
 unbind %
