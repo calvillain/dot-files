@@ -1,0 +1,3 @@
+configuration {
+	theme: "/home/clee/.config/rofi/gruvbox.rasi";
+}
