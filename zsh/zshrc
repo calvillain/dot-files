@@ -71,6 +71,7 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 # starship prompt
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
