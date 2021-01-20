@@ -1,0 +1,87 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/clee/
+	..
+1611031581
+'b
+	/home/clee/bin/
+	..
+1611031581
+'h
+	/home/clee/
+	..
+1611031581
+'z
+	/home/clee/.config/vifm
+	..
+1611031581
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/clee/.config/vifm/colors
+	Default.vifm
+1
+d/home/clee
+	Pictures
+5
+d/home/clee/Pictures
+	..
+0
+d/home/clee
+	.config
+3
+d/home/clee/.config
+	vifm
+22
+d/home/clee/.config/vifm
+	vifmrc
+5
+d
+
+# Right window history (oldest to newest):
+D/home/clee
+	..
+0
+D
+
+# Command line history (oldest to newest):
+:help
+:?
+:view
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+pgoogle-chrome-stable_current_amd64.deb
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0
