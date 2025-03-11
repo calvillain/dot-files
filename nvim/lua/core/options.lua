@@ -27,7 +27,14 @@ vim.o.termguicolors = true
 --vim.cmd()
 vim.opt.clipboard = ""
 
-vim.opt.tabstop = 4
+-- whitespace
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
+-- splits
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
@@ -56,20 +63,6 @@ if os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil then
 		},
 	}
 end
--- if vim.fn.has("wsl") == 1 then
---   vim.g.clipboard = {
---     name = "wslClipboard",
---     copy = {
---       ["+"] = 'clip.exe',
---       ["*"] = 'clip.exe',
---     },
---     paste = {
---       ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---       ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---     },
---     cache_enabled = 0,
---   }
--- end
 
 -- sync with system clipboard on focus
 vim.api.nvim_create_autocmd({ "FocusGained" }, {

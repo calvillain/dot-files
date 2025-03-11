@@ -7,10 +7,11 @@ local silent = { silent = true, noremap = true }
 map("", "<Space>", "<Nop>", silent)
 
 -- esc
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false })
+-- vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false })
 
 -- oil
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>_", "<CMD>Oil --float<CR>", { desc = "Open parent directory (float)" })
 
 -- zen
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>", { noremap = false })
@@ -33,8 +34,6 @@ vim.api.nvim_set_keymap("n", "TT", ":TransparentToggle<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", { noremap = true })
 
 -- terminal
-vim.api.nvim_set_keymap("n", "<leader>tt", ":FloatermToggle<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tn", ":FloatermNew<CR>", { noremap = true })
 vim.api.nvim_set_keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", { noremap = true })
 vim.api.nvim_set_keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", { noremap = true })
 vim.api.nvim_set_keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", { noremap = true })
@@ -71,4 +70,11 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Noice
 vim.api.nvim_set_keymap("n", "<leader>nn", ":Noice dismiss<CR>", { noremap = true })
 
-vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
+-- session
+vim.keymap.set("n", "<leader>os", "<CMD>Obsession Session.vim<CR>", { desc = "[O]bsession [S]ave" })
+vim.keymap.set("n", "<leader>ol", "<CMD>source Session.vim<CR>", { desc = "[O]bsession [L]oad" })
+
+-- vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
+
+-- Close buffer without closing window
+vim.keymap.set("n", "<leader>qw", ":bp<bar>sp<bar>bn<bar>bd<CR>", { noremap = true })

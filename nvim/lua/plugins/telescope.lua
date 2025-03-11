@@ -43,6 +43,7 @@ return {
         pickers = {
           find_files = {
             theme = "dropdown",
+            hidden = true,
           }
         },
         mappings = {
@@ -66,8 +67,9 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind  [B]uffers' })
-    vim.keymap.set('n', '<leader>fS', builtin.git_status, { desc = '' })
+    vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = '[F]ind in Git [S]tatus' })
     vim.keymap.set('n', '<leader>fm', ":Telescope harpoon marks<CR>", { desc = '[F]ind Harpoon [M]arks' })
+    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = '[F]ind [R]eferences' })
     -- vim.keymap.set("n", "<Leader>fn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", silent)
 
     vim.api.nvim_set_keymap("n", "<leader>fn", ":TodoTelescope<CR>", { noremap = true }) -- [F]ind [N]otes 

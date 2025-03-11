@@ -16,6 +16,7 @@ return {
     vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "[E]xplorer [F]ocus" })
     vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "[E]xplorer [C]ollapse" })
     vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "[E]xplorer [R]efresh" })
+    vim.keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>", { desc = "[E]xplorer [T]oggle" })
   end
 
 }

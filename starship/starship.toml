@@ -1,36 +1,33 @@
 #       
 add_newline = false
+scan_timeout = 30
+command_timeout = 800
 
 [line_break]
 disabled = true
 
+# Sets user-defined palette
+palette = "catppuccin_macchiato"
+
 [character]
-#disabled = true
-#style = "bg:#504945 fg:#ebdbb2"
-success_symbol = ""
-error_symbol = ""
-vicmd_symbol = ""
-use_symbol_for_status = true
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [directory]
-#disabled = true
-style = "bg:#504945 fg:#ebdbb2"
-format = "[$read_only ]($style)[$path ]($style)[](fg:#504945)"
-read_only=" "
-truncate_to_repo = false
-fish_style_pwd_dir_length = 1
+truncation_length = 4
+style = "green"
 
 [hostname]
-disabled = true
-style = "bg:#504945 fg:#ebdbb2"
+ssh_symbol = ''
+disabled = false
+format = '[$hostname](yellow) '
 ssh_only = false
 trim_at = ".local"
 
 [username]
-disabled = true
-style_user = "bg:#504945 fg:#ebdbb2"
-style_root = "bg:#504945 fg:#fb4934"
-format = "[ $user]($style)"
+disabled = false
+format = "[ $user@](yellow)"
 show_always = true
 
 [cmd_duration]
@@ -56,7 +53,7 @@ symbol = "  "
 threshold = 0
 
 [battery]
-disabled = false
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 unknown_symbol = "  "
 empty_symbol = "  "
@@ -79,25 +76,24 @@ full_symbol = "  "
 
 # VCS
 [git_branch]
-#disabled = true
+disabled = false
 symbol = " "
-style = "bg:#504945 fg:#ebdbb2"
-format = "[](fg:#504945)[$symbol$branch]($style)[](fg:#504945)"
+format = "[$symbol$branch]($style)"
 
 [git_commit]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "[](fg:#504945)[ ﰖ $hash]($style)[](fg:$style) "
 
 [git_state]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "[](fg:#504945)[State:($state( $progress_current/$progress_total))]($style)[](fg:$style) "
 am = "APPLYING-MAILBOX"
 am_or_rebase = "APPLYING-MAILBOX/REBASE"
 
 [git_status]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind)"
 conflicted = "[](fg:#504945)[Conflicted:${count}](bg:#504945)[](fg:#504945)"
@@ -112,104 +108,134 @@ behind = "[](fg:#504945)[Behind:${count}](bg:#504945)[](fg:#504945)"
 diverged = "[](fg:#504945)[Diverged:${count}נּ](bg:#504945)[ Ahead:${ahead_count}][ Behind:${behind_count}][](fg:#504945)"
 
 [shlvl]
-#disabled = true
-disabled = false
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [env_var]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = " gambling with [$env_value]($style)"
 variable = "GAMBLE_TEST_COMMAND"
 
 [aws]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [conda]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [dart]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [elixir]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [elm]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [golang]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [java]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [nix_shell]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [nodejs]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)[](fg:#504945)[$symbol$version]($style)[](fg:#504945)"
 symbol = " "
 
 [package]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)[](fg:#504945)[$symbol$version]($style)[](fg:#504945)"
 
 [php]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [python]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)[](fg:#504945)[${symbol}${pyenv_prefix}${version}($virtualenv)]($style)[](fg:#504945)"
 symbol = " "
 
 [lua]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)[](fg:#504945)[${symbol}${version}]($style)[](fg:#504945)"
 symbol = " "
 
 [ruby]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = " "
 
 [rust]
-#disabled = true
+disabled = true
 style = "bg:#504945 fg:#ebdbb2"
 format = "($style)"
 symbol = "  "
 
+[container]
+disabled = true
+
+# palette tables should be last in the config ⚓️
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
