@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
 
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp", 
+    "hrsh7th/cmp-nvim-lsp",
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'j-hui/fidget.nvim',
@@ -62,7 +62,7 @@ return {
 
     -- Enable the following language servers
     -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-    local servers = { 
+    local servers = {
       'lua_ls',
       'pyright',
       'sqlls'
@@ -77,12 +77,21 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+    -- Server command mappings (avoid using deprecated require('lspconfig')[server] API)
+    local server_commands = {
+      lua_ls = { 'lua-language-server' },
+      pyright = { 'pyright-langserver', '--stdio' },
+      sqlls = { 'sql-language-server', 'up', '--method', 'stdio' },
+    }
+
     for _, lsp in ipairs(servers) do
-      require('lspconfig')[lsp].setup {
+      vim.lsp.config(lsp, {
+        cmd = server_commands[lsp],
         on_attach = on_attach,
         capabilities = capabilities,
-      }
+      })
     end
+    vim.lsp.enable(servers)
 
     -- Turn on lsp status information
     require('fidget').setup()
@@ -94,7 +103,8 @@ return {
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
 
-    require('lspconfig').lua_ls.setup {
+    vim.lsp.config('lua_ls', {
+      cmd = server_commands.lua_ls,
       on_attach = on_attach,
       capabilities = capabilities,
       settings = {
@@ -116,7 +126,7 @@ return {
           telemetry = { enable = false },
         },
       },
-    }
+    })
 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'sh',

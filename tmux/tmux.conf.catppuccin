@@ -1,0 +1,58 @@
+# set tmux colors
+set -g default-terminal "screen-256color"
+
+# vim-like mappings for panes
+bind h select-pane -L
+bind j select-pane -D
+bind l select-pane -R
+bind k select-pane -U
+
+bind-key -r C-h resize-pane -L
+bind-key -r C-j resize-pane -D
+bind-key -r C-l resize-pane -R
+bind-key -r C-k resize-pane -U
+
+# sync clipboards
+set -g set-clipboard on
+
+# split panes using | and -
+bind '\' split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# enable mouse mode
+set -g mouse on
+# set -ga terminal-overrides ',*256color*:smcup@:rmcup@'
+
+# set prefix to Ctrl-a instead of Ctrl-b
+unbind C-b
+set -g prefix C-a
+
+# set vi mode
+set-window-option -g mode-keys vi
+
+# use zsh as default shell
+set-option -g default-shell /bin/zsh
+
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'catppuccin/tmux'
+set -g @catpuccin_flavor 'macchiato'
+set -g @plugin 'omerxx/tmux-floax'
+
+# catppuccin theme
+run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+
+# Make the status line more pleasant.
+set -g status-left ""
+set -g status-right '#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
+
+# Ensure that everything on the right side of the status line is included.
+set -g status-right-length 100
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

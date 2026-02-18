@@ -21,10 +21,10 @@ return {
     local builtin = require("telescope.builtin")
 
     local function filenameFirst(_, path)
-	local tail = vim.fs.basename(path)
-	local parent = vim.fs.dirname(path)
-	if parent == "." then return tail end
-	return string.format("%s\t\t%s", tail, parent)
+        local tail = vim.fs.basename(path)
+        local parent = vim.fs.dirname(path)
+        if parent == "." then return tail end
+        return string.format("%s\t\t%s", tail, parent)
     end
 
     telescope.setup {
@@ -43,6 +43,7 @@ return {
         pickers = {
           find_files = {
             theme = "dropdown",
+            hidden = true,
           }
         },
         mappings = {
@@ -57,7 +58,7 @@ return {
     }
 
     -- Enable telescope fzf native, if installed
-    telescope.load_extension('fzf')
+    -- telescope.load_extension('fzf')
 
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles', remap = true })
     vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld files', remap = true })
@@ -66,11 +67,12 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind  [B]uffers' })
-    vim.keymap.set('n', '<leader>fS', builtin.git_status, { desc = '' })
+    vim.keymap.set('n', '<leader>fs', builtin.git_status, { desc = '[F]ind in Git [S]tatus' })
     vim.keymap.set('n', '<leader>fm', ":Telescope harpoon marks<CR>", { desc = '[F]ind Harpoon [M]arks' })
+    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = '[F]ind [R]eferences' })
     -- vim.keymap.set("n", "<Leader>fn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", silent)
 
-    vim.api.nvim_set_keymap("n", "<leader>fn", ":TodoTelescope<CR>", { noremap = true }) -- [F]ind [N]otes 
+    vim.api.nvim_set_keymap("n", "<leader>fn", ":TodoTelescope<CR>", { noremap = true }) -- [F]ind [N]otes
     vim.api.nvim_set_keymap("n", "<leader><tab>", "<Cmd>lua require('telescope.builtin').commands()<CR>", { noremap = false })
 
     -- See `:help telescope.builtin`
